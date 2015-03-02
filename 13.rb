@@ -205,6 +205,6 @@ a = [
 ]
 b = 0
 a.each { |i| b += i }
-puts "Answer: #{b}"
-answer = b.to_s.split('').join
-puts answer[0,10]
+puts "Sum: #{b}"
+answer = b.to_s
+puts "Answer: #{answer[0,10]}"
