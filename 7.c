@@ -1,31 +1,32 @@
 /* By listing the first six prime numbers: 2, 3, 5, 7, 11,
  * and 13, we can see that the 6th prime is 13.
  * What is the 10001st prime number? */
+/* 104743 */
 #include<stdio.h>
 #include<math.h>
-double is_prime(double num){
-  double j = 1;
-  double k = 2;
-  while(k < num){
-    if(fmod(num,k) == 0){
-      /* not prime */
-      j = 0;
-      break;
+#define UPTO 10001
+int is_prime(int num){
+  if (num <= 1) return 0;
+  else if (num == 2) return 1;
+  else{
+    int k = 2; /* start at 2 */
+    while(k <= ceil(sqrt(num))){
+      if((num % k) == 0){
+        return 0;
+      }
+      ++k;
     }
-    ++k;
+    return 1;
   }
-  return j;
 }
+
 int main(void){
-  double num = 1;
-  int upto = 10001;
-  double count = 1;
-  while(count <= upto){
+  int count = 0, num = 0;
+  while(count < UPTO){
     ++num;
-    /* now check if it's prime */
     if(is_prime(num)){
-      printf("%f Is the %fth Prime\n", num,count);
       ++count;
     }
   }
+  printf("%d is the %dth Prime\n",num,count);
 }
