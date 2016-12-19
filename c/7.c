@@ -21,7 +21,7 @@ int is_prime(int num){
 }
 
 int main(void){
-  int count = 0, num = 0;
+  int i = 0, count = 0, num = 0;
   while(count < UPTO){
     ++num;
     if(is_prime(num)){
@@ -29,4 +29,5 @@ int main(void){
     }
   }
   printf("%d is the %dth Prime\n",num,count);
+  ++i;
 }
