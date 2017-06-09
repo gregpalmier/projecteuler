@@ -14,3 +14,32 @@
  *    We can see that 28 is the first triangle number to have over five divisors.
  *
  *    What is the value of the first triangle number to have over five hundred divisors? */
+#include<stdio.h>
+#include<math.h>
+
+int count_factors(int num){
+  int i;
+  int count = 0;
+  int lim = floor(sqrt(num));
+  for(i = 1;i <= lim;++i){
+    if((num % i) == 0)
+      ++count;
+  }
+  return (count * 2);
+}
+
+int main(void){
+  int num = 1;
+  int find = 500;
+  int tri_num, count = 0;
+  int best = 0;
+  do{
+    ++num;
+    tri_num = num * (num + 1) / 2;
+    count = count_factors(tri_num);
+    if (count > best){
+      best = count;
+    }
+    printf("# of factors for %d: %d (best: %d)\n", tri_num, count, best);
+  }while (count <= find);
+}
